@@ -36,7 +36,9 @@ app.post('/api/notes', (req, res) => {
     fs.readFile('./db/db.json', 'utf-8', (err, data) => {
         if (err) throw err;
         let db = JSON.parse(data)
+        console.log('before push', db)
         db.push(newNote)
+        console.log('after push', db)
         fs.writeFile('./db/db.json', JSON.stringify(db), (err) => {
             if (err) throw err;
             console.log('Saved a new note')
